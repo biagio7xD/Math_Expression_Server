@@ -65,8 +65,8 @@ statReqsCommand
 statAvgCommand
 statMaxCommand
 computationRequest
-computationKind
-valuesKind
+computationType
+valuesType
 variableValuesFunction
 variableValues
 variableLowerValue

@@ -11,6 +11,11 @@ public class CommandResponse {
 	this.commandType = commandType;
   }
 
+  public CommandResponse(CommandType commandType) {
+	this.commandType = commandType;
+	this.abstractResponse = null;
+  }
+
   public CommandType getCommandType() {
 	return commandType;
   }
@@ -18,8 +23,8 @@ public class CommandResponse {
   public String getResponse() {
 	if (abstractResponse != null) {
 	  return abstractResponse.buildResponse();
-	}else {
-	  throw new NullPointerException("Response doesn't exist");
+	} else {
+	  throw new NullPointerException("Response doesn't exist.");
 	}
   }
 }

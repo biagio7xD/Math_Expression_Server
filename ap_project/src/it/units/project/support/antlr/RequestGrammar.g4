@@ -22,9 +22,9 @@ statReqsCommand  : STAT_REQS;
 statAvgCommand   : STAT_AVG_TIME;
 statMaxCommand   : STAT_MAX_TIME;
 
-computationRequest: computationKind UNDER valuesKind SEMI_COLUMN variableValuesFunction SEMI_COLUMN expressions;
-computationKind : MIN | MAX | AVG | COUNT;
-valuesKind : GRID | LIST;
+computationRequest: computationType UNDER valuesType SEMI_COLUMN variableValuesFunction SEMI_COLUMN expressions;
+computationType : MIN | MAX | AVG | COUNT;
+valuesType : GRID | LIST;
 
 variableValuesFunction: variableValues (COMMA variableValues)*;
 variableValues         : variable COLUMN variableLowerValue COLUMN variableStepValue COLUMN variableUpperValue;

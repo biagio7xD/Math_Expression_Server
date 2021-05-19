@@ -1,4 +1,4 @@
-// Generated from /Users/biagiolicari/Documents/TEST/ap_project_LicariTEST/Math_Expression_Server/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
+// Generated from /Users/biagiolicari/Documents/ap_project_Licari/ap_project/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
 package it.units.project.support.antlr.grammar;
 
 import org.antlr.v4.runtime.tree.ParseTreeListener;
@@ -121,32 +121,32 @@ public interface RequestGrammarListener extends ParseTreeListener {
   void exitComputationRequest(RequestGrammarParser.ComputationRequestContext ctx);
 
   /**
-   * Enter a parse tree produced by {@link RequestGrammarParser#computationKind}.
+   * Enter a parse tree produced by {@link RequestGrammarParser#computationType}.
    *
    * @param ctx the parse tree
    */
-  void enterComputationKind(RequestGrammarParser.ComputationKindContext ctx);
+  void enterComputationType(RequestGrammarParser.ComputationTypeContext ctx);
 
   /**
-   * Exit a parse tree produced by {@link RequestGrammarParser#computationKind}.
+   * Exit a parse tree produced by {@link RequestGrammarParser#computationType}.
    *
    * @param ctx the parse tree
    */
-  void exitComputationKind(RequestGrammarParser.ComputationKindContext ctx);
+  void exitComputationType(RequestGrammarParser.ComputationTypeContext ctx);
 
   /**
-   * Enter a parse tree produced by {@link RequestGrammarParser#valuesKind}.
+   * Enter a parse tree produced by {@link RequestGrammarParser#valuesType}.
    *
    * @param ctx the parse tree
    */
-  void enterValuesKind(RequestGrammarParser.ValuesKindContext ctx);
+  void enterValuesType(RequestGrammarParser.ValuesTypeContext ctx);
 
   /**
-   * Exit a parse tree produced by {@link RequestGrammarParser#valuesKind}.
+   * Exit a parse tree produced by {@link RequestGrammarParser#valuesType}.
    *
    * @param ctx the parse tree
    */
-  void exitValuesKind(RequestGrammarParser.ValuesKindContext ctx);
+  void exitValuesType(RequestGrammarParser.ValuesTypeContext ctx);
 
   /**
    * Enter a parse tree produced by {@link RequestGrammarParser#variableValuesFunction}.

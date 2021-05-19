@@ -1,4 +1,4 @@
-// Generated from /Users/biagiolicari/Documents/TEST/ap_project_LicariTEST/Math_Expression_Server/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
+// Generated from /Users/biagiolicari/Documents/ap_project_Licari/ap_project/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
 package it.units.project.support.antlr.grammar;
 
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -161,7 +161,7 @@ public class RequestGrammarBaseListener implements RequestGrammarListener {
    * <p>The default implementation does nothing.</p>
    */
   @Override
-  public void enterComputationKind(RequestGrammarParser.ComputationKindContext ctx) {
+  public void enterComputationType(RequestGrammarParser.ComputationTypeContext ctx) {
   }
 
   /**
@@ -170,7 +170,7 @@ public class RequestGrammarBaseListener implements RequestGrammarListener {
    * <p>The default implementation does nothing.</p>
    */
   @Override
-  public void exitComputationKind(RequestGrammarParser.ComputationKindContext ctx) {
+  public void exitComputationType(RequestGrammarParser.ComputationTypeContext ctx) {
   }
 
   /**
@@ -179,7 +179,7 @@ public class RequestGrammarBaseListener implements RequestGrammarListener {
    * <p>The default implementation does nothing.</p>
    */
   @Override
-  public void enterValuesKind(RequestGrammarParser.ValuesKindContext ctx) {
+  public void enterValuesType(RequestGrammarParser.ValuesTypeContext ctx) {
   }
 
   /**
@@ -188,7 +188,7 @@ public class RequestGrammarBaseListener implements RequestGrammarListener {
    * <p>The default implementation does nothing.</p>
    */
   @Override
-  public void exitValuesKind(RequestGrammarParser.ValuesKindContext ctx) {
+  public void exitValuesType(RequestGrammarParser.ValuesTypeContext ctx) {
   }
 
   /**

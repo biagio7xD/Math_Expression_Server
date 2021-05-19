@@ -8,7 +8,6 @@ import java.net.Socket;
 import java.util.Date;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.RejectedExecutionException;
 
 public class Server implements CommandProcessor {
 
@@ -28,7 +27,7 @@ public class Server implements CommandProcessor {
 		  System.out.print(acceptedConnectionMessage(socket));
 		  ClientHandler clientHandler = new ClientHandler(socket, this);
 		  clientHandler.start();
-		} catch (RejectedExecutionException e) {
+		} catch (IllegalThreadStateException e) {
 		  System.err.println(e.getMessage());
 		} catch (IOException e) {
 		  System.err.print(refusedConnectionMessage(e));
@@ -44,16 +43,16 @@ public class Server implements CommandProcessor {
 	return null;
   }
 
-  private String acceptedConnectionMessage(Socket socket) {
+  private synchronized String acceptedConnectionMessage(Socket socket) {
 	return String.format(
 			"[%1$tH:%1$tM:%1$tS %1$tA, %1$td %1$tB %1$tY] New connection from Client: %2$s:%3$d.%4$s",
 			new Date(), socket.getInetAddress(), socket.getPort(), System.lineSeparator()
 	);
   }
 
-  private String refusedConnectionMessage(Exception e) {
+  private synchronized String refusedConnectionMessage(Exception e) {
 	return String.format(
-			"[%1$tH:%1$tM:%1$tS %1$tA, %1$td %1$tB %1$tY] Cannot accept connection due to %2$s. %3$s",
+			"[%1$tH:%1$tM:%1$tS %1$tA, %1$td %1$tB %1$tY] Cannot accept connection due to %2$s.%3$s",
 			new Date(), e, System.lineSeparator()
 	);
   }

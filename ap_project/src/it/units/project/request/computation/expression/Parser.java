@@ -35,19 +35,18 @@ public class Parser {
 	  if (operatorToken != null && operatorToken.start == cursor) {
 		cursor = operatorToken.end;
 	  } else {
-		throw new IllegalArgumentException(
-				String.format(
-						"Unexpected char at %d instead of operator: '%s'", cursor, string.charAt(cursor)));
+		throw new IllegalArgumentException(String.format(
+				"Unexpected char at %d instead of operator: '%s'",
+				cursor, string.charAt(cursor)));
 	  }
 	  Node child2 = parse();
 	  Token closedBracketToken = TokenType.CLOSED_BRACKET.next(string, cursor);
 	  if (closedBracketToken != null && closedBracketToken.start == cursor) {
 		cursor = closedBracketToken.end;
 	  } else {
-		throw new IllegalArgumentException(
-				String.format(
-						"Unexpected char at %d instead of closed bracket: '%s'",
-						cursor, string.charAt(cursor)));
+		throw new IllegalArgumentException(String.format(
+				"Unexpected char at %d instead of closed bracket: '%s'",
+				cursor, string.charAt(cursor)));
 	  }
 	  Operator.Type operatorType = null;
 	  String operatorString = string.substring(operatorToken.start, operatorToken.end);
@@ -58,13 +57,15 @@ public class Parser {
 		}
 	  }
 	  if (operatorType == null) {
-		throw new IllegalArgumentException(
-				String.format("Unknown operator at %d: '%s'", operatorToken.start, operatorString));
+		throw new IllegalArgumentException(String.format(
+				"Unknown operator at %d: '%s'",
+				operatorToken.start, operatorString));
 	  }
 	  return new Operator(operatorType, Arrays.asList(child1, child2));
 	}
-	throw new IllegalArgumentException(
-			String.format("Unexpected char at %d: '%s'", cursor, string.charAt(cursor)));
+	throw new IllegalArgumentException(String.format(
+			"Unexpected char at %d: '%s'",
+			cursor, string.charAt(cursor)));
   }
 
   public enum TokenType {

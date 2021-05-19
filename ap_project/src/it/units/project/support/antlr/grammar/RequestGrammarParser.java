@@ -1,4 +1,4 @@
-// Generated from /Users/biagiolicari/Documents/TEST/ap_project_LicariTEST/Math_Expression_Server/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
+// Generated from /Users/biagiolicari/Documents/ap_project_Licari/ap_project/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
 package it.units.project.support.antlr.grammar;
 
 import org.antlr.v4.runtime.*;
@@ -23,7 +23,7 @@ public class RequestGrammarParser extends Parser {
   public static final int
 		  RULE_parse = 0, RULE_command = 1, RULE_quitRequest = 2, RULE_statRequest = 3,
 		  RULE_statReqsCommand = 4, RULE_statAvgCommand = 5, RULE_statMaxCommand = 6,
-		  RULE_computationRequest = 7, RULE_computationKind = 8, RULE_valuesKind = 9,
+		  RULE_computationRequest = 7, RULE_computationType = 8, RULE_valuesType = 9,
 		  RULE_variableValuesFunction = 10, RULE_variableValues = 11, RULE_variableLowerValue = 12,
 		  RULE_variableStepValue = 13, RULE_variableUpperValue = 14, RULE_javaNumber = 15,
 		  RULE_javaNumberExponential = 16, RULE_javaNumberSign = 17, RULE_expressions = 18,
@@ -146,8 +146,8 @@ public class RequestGrammarParser extends Parser {
   private static String[] makeRuleNames() {
 	return new String[]{
 			"parse", "command", "quitRequest", "statRequest", "statReqsCommand",
-			"statAvgCommand", "statMaxCommand", "computationRequest", "computationKind",
-			"valuesKind", "variableValuesFunction", "variableValues", "variableLowerValue",
+			"statAvgCommand", "statMaxCommand", "computationRequest", "computationType",
+			"valuesType", "variableValuesFunction", "variableValues", "variableLowerValue",
 			"variableStepValue", "variableUpperValue", "javaNumber", "javaNumberExponential",
 			"javaNumberSign", "expressions", "expression", "operator", "variable",
 			"number"
@@ -394,11 +394,11 @@ public class RequestGrammarParser extends Parser {
 	  enterOuterAlt(_localctx, 1);
 	  {
 		setState(67);
-		computationKind();
+		computationType();
 		setState(68);
 		match(UNDER);
 		setState(69);
-		valuesKind();
+		valuesType();
 		setState(70);
 		match(SEMI_COLUMN);
 		setState(71);
@@ -418,9 +418,9 @@ public class RequestGrammarParser extends Parser {
 	return _localctx;
   }
 
-  public final ComputationKindContext computationKind() throws RecognitionException {
-	ComputationKindContext _localctx = new ComputationKindContext(_ctx, getState());
-	enterRule(_localctx, 16, RULE_computationKind);
+  public final ComputationTypeContext computationType() throws RecognitionException {
+	ComputationTypeContext _localctx = new ComputationTypeContext(_ctx, getState());
+	enterRule(_localctx, 16, RULE_computationType);
 	int _la;
 	try {
 	  enterOuterAlt(_localctx, 1);
@@ -445,9 +445,9 @@ public class RequestGrammarParser extends Parser {
 	return _localctx;
   }
 
-  public final ValuesKindContext valuesKind() throws RecognitionException {
-	ValuesKindContext _localctx = new ValuesKindContext(_ctx, getState());
-	enterRule(_localctx, 18, RULE_valuesKind);
+  public final ValuesTypeContext valuesType() throws RecognitionException {
+	ValuesTypeContext _localctx = new ValuesTypeContext(_ctx, getState());
+	enterRule(_localctx, 18, RULE_valuesType);
 	int _la;
 	try {
 	  enterOuterAlt(_localctx, 1);
@@ -1337,16 +1337,16 @@ public class RequestGrammarParser extends Parser {
 	  super(parent, invokingState);
 	}
 
-	public ComputationKindContext computationKind() {
-	  return getRuleContext(ComputationKindContext.class, 0);
+	public ComputationTypeContext computationType() {
+	  return getRuleContext(ComputationTypeContext.class, 0);
 	}
 
 	public TerminalNode UNDER() {
 	  return getToken(RequestGrammarParser.UNDER, 0);
 	}
 
-	public ValuesKindContext valuesKind() {
-	  return getRuleContext(ValuesKindContext.class, 0);
+	public ValuesTypeContext valuesType() {
+	  return getRuleContext(ValuesTypeContext.class, 0);
 	}
 
 	public List<TerminalNode> SEMI_COLUMN() {
@@ -1388,8 +1388,8 @@ public class RequestGrammarParser extends Parser {
 	}
   }
 
-  public static class ComputationKindContext extends ParserRuleContext {
-	public ComputationKindContext(ParserRuleContext parent, int invokingState) {
+  public static class ComputationTypeContext extends ParserRuleContext {
+	public ComputationTypeContext(ParserRuleContext parent, int invokingState) {
 	  super(parent, invokingState);
 	}
 
@@ -1411,29 +1411,29 @@ public class RequestGrammarParser extends Parser {
 
 	@Override
 	public int getRuleIndex() {
-	  return RULE_computationKind;
+	  return RULE_computationType;
 	}
 
 	@Override
 	public void enterRule(ParseTreeListener listener) {
-	  if (listener instanceof RequestGrammarListener) ((RequestGrammarListener) listener).enterComputationKind(this);
+	  if (listener instanceof RequestGrammarListener) ((RequestGrammarListener) listener).enterComputationType(this);
 	}
 
 	@Override
 	public void exitRule(ParseTreeListener listener) {
-	  if (listener instanceof RequestGrammarListener) ((RequestGrammarListener) listener).exitComputationKind(this);
+	  if (listener instanceof RequestGrammarListener) ((RequestGrammarListener) listener).exitComputationType(this);
 	}
 
 	@Override
 	public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 	  if (visitor instanceof RequestGrammarVisitor)
-		return ((RequestGrammarVisitor<? extends T>) visitor).visitComputationKind(this);
+		return ((RequestGrammarVisitor<? extends T>) visitor).visitComputationType(this);
 	  else return visitor.visitChildren(this);
 	}
   }
 
-  public static class ValuesKindContext extends ParserRuleContext {
-	public ValuesKindContext(ParserRuleContext parent, int invokingState) {
+  public static class ValuesTypeContext extends ParserRuleContext {
+	public ValuesTypeContext(ParserRuleContext parent, int invokingState) {
 	  super(parent, invokingState);
 	}
 
@@ -1447,23 +1447,23 @@ public class RequestGrammarParser extends Parser {
 
 	@Override
 	public int getRuleIndex() {
-	  return RULE_valuesKind;
+	  return RULE_valuesType;
 	}
 
 	@Override
 	public void enterRule(ParseTreeListener listener) {
-	  if (listener instanceof RequestGrammarListener) ((RequestGrammarListener) listener).enterValuesKind(this);
+	  if (listener instanceof RequestGrammarListener) ((RequestGrammarListener) listener).enterValuesType(this);
 	}
 
 	@Override
 	public void exitRule(ParseTreeListener listener) {
-	  if (listener instanceof RequestGrammarListener) ((RequestGrammarListener) listener).exitValuesKind(this);
+	  if (listener instanceof RequestGrammarListener) ((RequestGrammarListener) listener).exitValuesType(this);
 	}
 
 	@Override
 	public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
 	  if (visitor instanceof RequestGrammarVisitor)
-		return ((RequestGrammarVisitor<? extends T>) visitor).visitValuesKind(this);
+		return ((RequestGrammarVisitor<? extends T>) visitor).visitValuesType(this);
 	  else return visitor.visitChildren(this);
 	}
   }

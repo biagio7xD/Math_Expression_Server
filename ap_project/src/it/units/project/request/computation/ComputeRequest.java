@@ -16,32 +16,32 @@ public class ComputeRequest extends AbstractRequest {
 
   private static final int CHILDREN_SIZE = 2;
   private final List<VariableValue> variableValueList;
-  private final ComputationType computationKind;
-  private final ValuesType valuesKind;
+  private final ComputationType computationType;
+  private final ValuesType valuesType;
   private final List<String> expressions;
 
-  public ComputeRequest(List<VariableValue> variableValueList, ComputationType computationKind, ValuesType valuesKind, List<String> expressions) {
+  public ComputeRequest(List<VariableValue> variableValueList, ComputationType computationType, ValuesType valuesType, List<String> expressions) {
 	super(CommandType.COMPUTATION);
 	this.variableValueList = variableValueList;
-	this.computationKind = computationKind;
-	this.valuesKind = valuesKind;
+	this.computationType = computationType;
+	this.valuesType = valuesType;
 	this.expressions = expressions;
   }
 
   @Override
-  public CommandResponse compute() {
-	final ComputationDomain computationDomain = new ComputationDomain(variableValueList, valuesKind);
-	String result = switch (computationKind) {
-	  case MAX, MIN -> determineComputationResult(computationDomain, expressions);
-	  case AVG -> determineComputationResult(computationDomain, expressions.subList(0, 1));
-	  case COUNT -> determineComputationResult(computationDomain);
+  public CommandResponse process() {
+	final ComputationDomain computationDomain = new ComputationDomain(variableValueList, valuesType);
+	double result = switch (computationType) {
+	  case MAX, MIN -> computeResult(computationDomain, expressions);
+	  case AVG -> computeResult(computationDomain, expressions.subList(0, 1));
+	  case COUNT -> computeResult(computationDomain);
 	};
 	final AbstractResponse response = new SuccessfulResponse(result, this.finalizeRequestExecutionTime());
 	return new CommandResponse(response, commandType);
   }
 
-  private String determineComputationResult(ComputationDomain computationDomain, List<String> expressionList) {
-	double result = setInitialResultValue();
+  private double computeResult(ComputationDomain computationDomain, List<String> expressionList) {
+	double result = setInitialResult();
 	MultiVariableValues multiVariableValues = computationDomain.buildComputationDomain();
 	for (String expression : expressionList) {
 	  Node node = new Parser(expression).parse();
@@ -50,41 +50,37 @@ public class ComputeRequest extends AbstractRequest {
 		result = mergeResult(result, tmpResult);
 	  }
 	}
-	return finalizeComputationResult(result, multiVariableValues.size());
+	return finalizeResult(result, multiVariableValues.size());
   }
 
-  private String determineComputationResult(ComputationDomain computationDomain) {
-	double size = computationDomain.buildComputationDomain().size();
-	return formatValue(size, 6);
+  private double computeResult(ComputationDomain computationDomain) {
+	return computationDomain.buildComputationDomain().size();
   }
 
-  private String finalizeComputationResult(double currentResult, int size) {
-	return switch (computationKind) {
-	  case MAX, MIN -> formatValue(currentResult, 6);
-	  case AVG -> {
-		double result = currentResult / size;
-		yield formatValue(result, 6);
-	  }
-	  default -> throw new IllegalStateException("Unexpected value: " + computationKind);
+  private double finalizeResult(double currentResult, int size) {
+	return switch (computationType) {
+	  case MAX, MIN -> currentResult;
+	  case AVG -> currentResult / size;
+	  default -> throw new IllegalStateException("Unexpected value: " + computationType);
 	};
 
   }
 
   private double mergeResult(double currentResult, double tmpResult) {
-	return switch (computationKind) {
+	return switch (computationType) {
 	  case MAX -> Math.max(currentResult, tmpResult);
 	  case MIN -> Math.min(currentResult, tmpResult);
 	  case AVG -> currentResult + tmpResult;
-	  default -> throw new IllegalStateException("Unexpected value in method mergeResult(): " + computationKind);
+	  default -> throw new IllegalStateException("Unexpected value to merge current and tmp result: " + computationType);
 	};
   }
 
-  private double setInitialResultValue() {
-	return switch (computationKind) {
+  private double setInitialResult() {
+	return switch (computationType) {
 	  case MAX -> Double.MIN_VALUE;
 	  case MIN -> Double.MAX_VALUE;
 	  case AVG -> 0.0;
-	  default -> throw new IllegalStateException("Unexpected value in method setInitialResultValue(): " + computationKind);
+	  default -> throw new IllegalStateException("Unexpected value to set initial value for computation: " + computationType);
 	};
   }
 

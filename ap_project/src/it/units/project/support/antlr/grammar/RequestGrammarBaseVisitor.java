@@ -1,4 +1,4 @@
-// Generated from /Users/biagiolicari/Documents/TEST/ap_project_LicariTEST/Math_Expression_Server/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
+// Generated from /Users/biagiolicari/Documents/ap_project_Licari/ap_project/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
 package it.units.project.support.antlr.grammar;
 
 import org.antlr.v4.runtime.tree.AbstractParseTreeVisitor;
@@ -107,7 +107,7 @@ public class RequestGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> im
    * {@link #visitChildren} on {@code ctx}.</p>
    */
   @Override
-  public T visitComputationKind(RequestGrammarParser.ComputationKindContext ctx) {
+  public T visitComputationType(RequestGrammarParser.ComputationTypeContext ctx) {
 	return visitChildren(ctx);
   }
 
@@ -118,7 +118,7 @@ public class RequestGrammarBaseVisitor<T> extends AbstractParseTreeVisitor<T> im
    * {@link #visitChildren} on {@code ctx}.</p>
    */
   @Override
-  public T visitValuesKind(RequestGrammarParser.ValuesKindContext ctx) {
+  public T visitValuesType(RequestGrammarParser.ValuesTypeContext ctx) {
 	return visitChildren(ctx);
   }
 

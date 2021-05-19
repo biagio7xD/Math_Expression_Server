@@ -1,6 +1,9 @@
 package it.units.project.server;
 
-import it.units.project.exception.*;
+import it.units.project.exception.BadDomainDefinition;
+import it.units.project.exception.ComputationException;
+import it.units.project.exception.MalformedInputRequest;
+import it.units.project.exception.MalformedVariableValueDefinition;
 import it.units.project.request.AbstractRequest;
 import it.units.project.request.CommandType;
 import it.units.project.response.CommandResponse;
@@ -35,7 +38,7 @@ public class ProcessingServer extends Server {
 
   private CommandResponse execute(AbstractRequest request, CommandType commandType) {
 	return switch (commandType) {
-	  case BYE -> new CommandResponse(null, commandType);
+	  case BYE -> new CommandResponse(commandType);
 	  case STATS -> {
 		synchronized (lock) {
 		  yield execute(request);
@@ -55,9 +58,9 @@ public class ProcessingServer extends Server {
   private CommandResponse execute(AbstractRequest request) {
 	CommandResponse response;
 	try {
-	  response = request.compute();
+	  response = request.process();
 	  updateStats(request.getTime());
-	} catch (CommandException | BadDomainDefinition | ComputationException | IllegalArgumentException e) {
+	} catch (BadDomainDefinition | ComputationException | IllegalArgumentException | IllegalStateException e) {
 	  response = new CommandResponse(new ErrorResponse(e), request.getCommandType());
 	}
 	return response;
@@ -70,5 +73,4 @@ public class ProcessingServer extends Server {
 	  stats[2] = requestExecutionTime;
 	}
   }
-
 }

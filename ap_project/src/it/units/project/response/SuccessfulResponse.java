@@ -4,20 +4,26 @@ import java.util.Locale;
 
 public class SuccessfulResponse extends AbstractResponse {
 
-  private static final int DECIMAL_PRECISION = 3;
-  private final double requestTime;
+  private final String requestTime;
+  private final String result;
 
-  public SuccessfulResponse(String response, double requestTime) {
-	super(response, ResponseType.OK);
-	this.requestTime = requestTime;
+  public SuccessfulResponse(double result, double requestTime) {
+	super(ResponseType.OK);
+	this.result = formatDigitsOfValue(result, 6);
+	this.requestTime = formatDigitsOfValue(requestTime, 3);
   }
 
   @Override
   public String buildResponse() {
 	return responseType.name()
 			+ SEPARATOR
-			+ String.format(Locale.US, "%." + DECIMAL_PRECISION + "f", requestTime)
+			+ requestTime
 			+ SEPARATOR
-			+ responseMessage;
+			+ result;
   }
+
+  private String formatDigitsOfValue(double value, int numOfDecimalDigits) {
+	return String.format(Locale.US, "%." + numOfDecimalDigits + "f", value);
+  }
+
 }

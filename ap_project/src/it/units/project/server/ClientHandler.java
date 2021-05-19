@@ -69,7 +69,7 @@ public class ClientHandler extends Thread {
 
   private String forcedCloseConnectionMessage(Socket socket) {
 	return String.format(
-			"[%1$tH:%1$tM:%1$tS %1$tA, %1$tB %1$tY] Client: %2$s:%3$d abruptly closed connection.%4$s",
+			"[%1$tH:%1$tM:%1$tS %1$tA, %1$td %1$tB %1$tY] Client: %2$s:%3$d abruptly closed connection.%4$s",
 			new Date(), socket.getInetAddress(), socket.getPort(), System.lineSeparator()
 	);
   }

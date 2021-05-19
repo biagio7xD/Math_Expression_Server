@@ -25,8 +25,8 @@ public class CommandVisitor extends RequestGrammarBaseVisitor<AbstractRequest> {
 	VariableValuesFunctionVisitor variableValuesFunctionVisitor = new VariableValuesFunctionVisitor();
 	return new ComputeRequest(
 			variableValuesFunctionVisitor.visitVariableValuesFunction(ctx.variableValuesFunction()),
-			ComputationType.valueOf(commandTypeVisitor.visitComputationKind(ctx.computationKind())),
-			ValuesType.valueOf(commandTypeVisitor.visitValuesKind(ctx.valuesKind())),
+			ComputationType.valueOf(commandTypeVisitor.visitComputationType(ctx.computationType())),
+			ValuesType.valueOf(commandTypeVisitor.visitValuesType(ctx.valuesType())),
 			expressionsVisitor.visitExpressions(ctx.expressions())
 	);
   }

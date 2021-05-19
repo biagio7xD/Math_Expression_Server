@@ -1,4 +1,4 @@
-// Generated from /Users/biagiolicari/Documents/TEST/ap_project_LicariTEST/Math_Expression_Server/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
+// Generated from /Users/biagiolicari/Documents/ap_project_Licari/ap_project/src/it/units/project/support/antlr/RequestGrammar.g4 by ANTLR 4.9.1
 package it.units.project.support.antlr.grammar;
 
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
@@ -76,20 +76,20 @@ public interface RequestGrammarVisitor<T> extends ParseTreeVisitor<T> {
   T visitComputationRequest(RequestGrammarParser.ComputationRequestContext ctx);
 
   /**
-   * Visit a parse tree produced by {@link RequestGrammarParser#computationKind}.
+   * Visit a parse tree produced by {@link RequestGrammarParser#computationType}.
    *
    * @param ctx the parse tree
    * @return the visitor result
    */
-  T visitComputationKind(RequestGrammarParser.ComputationKindContext ctx);
+  T visitComputationType(RequestGrammarParser.ComputationTypeContext ctx);
 
   /**
-   * Visit a parse tree produced by {@link RequestGrammarParser#valuesKind}.
+   * Visit a parse tree produced by {@link RequestGrammarParser#valuesType}.
    *
    * @param ctx the parse tree
    * @return the visitor result
    */
-  T visitValuesKind(RequestGrammarParser.ValuesKindContext ctx);
+  T visitValuesType(RequestGrammarParser.ValuesTypeContext ctx);
 
   /**
    * Visit a parse tree produced by {@link RequestGrammarParser#variableValuesFunction}.

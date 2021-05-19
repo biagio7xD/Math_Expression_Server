@@ -6,17 +6,27 @@ import it.units.project.support.antlr.grammar.RequestGrammarParser;
 public class CommandTypeVisitor extends RequestGrammarBaseVisitor<String> {
 
   @Override
-  public String visitStatRequest(RequestGrammarParser.StatRequestContext ctx) {
+  public String visitStatAvgCommand(RequestGrammarParser.StatAvgCommandContext ctx) {
 	return ctx.getText();
   }
 
   @Override
-  public String visitValuesKind(RequestGrammarParser.ValuesKindContext ctx) {
+  public String visitStatMaxCommand(RequestGrammarParser.StatMaxCommandContext ctx) {
 	return ctx.getText();
   }
 
   @Override
-  public String visitComputationKind(RequestGrammarParser.ComputationKindContext ctx) {
+  public String visitStatReqsCommand(RequestGrammarParser.StatReqsCommandContext ctx) {
+	return ctx.getText();
+  }
+
+  @Override
+  public String visitValuesType(RequestGrammarParser.ValuesTypeContext ctx) {
+	return ctx.getText();
+  }
+
+  @Override
+  public String visitComputationType(RequestGrammarParser.ComputationTypeContext ctx) {
 	return ctx.getText();
   }
 

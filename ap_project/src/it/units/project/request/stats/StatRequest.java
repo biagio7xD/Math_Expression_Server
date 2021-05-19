@@ -9,24 +9,22 @@ import it.units.project.response.SuccessfulResponse;
 public class StatRequest extends AbstractRequest {
 
   private final StatType statType;
+  private final double[] stats;
 
   public StatRequest(StatType statType, double[] stats) {
-	super(stats, CommandType.STATS);
+	super(CommandType.STATS);
 	this.statType = statType;
-
+	this.stats = stats;
   }
 
   @Override
-  public CommandResponse compute() {
+  public CommandResponse process() {
 	double result = switch (statType) {
 	  case STAT_REQS -> stats[0];
 	  case STAT_MAX_TIME -> stats[2];
 	  case STAT_AVG_TIME -> (stats[1] / stats[0]);
 	};
-	AbstractResponse response = new SuccessfulResponse(
-			formatValue(result, 3),
-			this.finalizeRequestExecutionTime()
-	);
+	final AbstractResponse response = new SuccessfulResponse(result, this.finalizeRequestExecutionTime());
 	return new CommandResponse(response, commandType);
   }
 }

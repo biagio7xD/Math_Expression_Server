@@ -10,7 +10,7 @@ public class QuitRequest extends AbstractRequest {
   }
 
   @Override
-  public CommandResponse compute() {
+  public CommandResponse process() {
 	return new CommandResponse(null, commandType);
   }
 }

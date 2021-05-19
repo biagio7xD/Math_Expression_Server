@@ -35,7 +35,7 @@ public class ComputationDomain {
 	return variableValuesList.stream().map(VariableValue::buildVariableValueSequence).collect(Collectors.toList());
   }
 
-  public List<String> getVariablesNames() {
+  private List<String> getVariablesNames() {
 	return variableValuesList.stream().map(VariableValue::getVariableName).collect(Collectors.toList());
   }
 
@@ -44,11 +44,11 @@ public class ComputationDomain {
   }
 
   private MultiVariableValues makeList(List<String> variableNames, List<List<Double>> valuesSequences) {
-	int domainSize = checkListsHaveSameSize(valuesSequences);
-	if (domainSize == -1) {
-	  throw new BadDomainDefinition("Variables don't have the same domain size");
+	int sequencesDomainSize = getSequencesDomainSize(valuesSequences);
+	if (sequencesDomainSize == -1) {
+	  throw new BadDomainDefinition("Variables don't have the same domain size.");
 	}
-	List<List<Double>> mergedListElement = mergeListElement(valuesSequences, domainSize);
+	List<List<Double>> mergedListElement = mergeListElement(valuesSequences, sequencesDomainSize);
 	return new MultiVariableValues(variableNames, mergedListElement);
   }
 
@@ -67,7 +67,7 @@ public class ComputationDomain {
 	return tuples;
   }
 
-  private int checkListsHaveSameSize(List<List<Double>> valuesSequences) {
+  private int getSequencesDomainSize(List<List<Double>> valuesSequences) {
 	int lastSize = -1;
 	for (List<Double> values : valuesSequences) {
 	  if (values != null) {
