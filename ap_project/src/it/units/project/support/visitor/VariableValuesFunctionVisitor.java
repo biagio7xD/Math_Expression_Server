@@ -1,7 +1,7 @@
 package it.units.project.support.visitor;
 
 import it.units.project.exception.MalformedVariableValueDefinition;
-import it.units.project.request.computation.variablevaluesfunction.VariableValue;
+import it.units.project.request.computation.variablevalue.VariableValue;
 import it.units.project.support.antlr.grammar.RequestGrammarBaseVisitor;
 import it.units.project.support.antlr.grammar.RequestGrammarParser;
 

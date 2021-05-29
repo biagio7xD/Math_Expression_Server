@@ -1,4 +1,4 @@
-package it.units.project.request.computation.variablevaluesfunction;
+package it.units.project.request.computation.variablevalue;
 
 import java.math.BigDecimal;
 import java.util.List;

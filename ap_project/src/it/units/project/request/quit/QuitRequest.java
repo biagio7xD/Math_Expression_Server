@@ -11,6 +11,6 @@ public class QuitRequest extends AbstractRequest {
 
   @Override
   public CommandResponse process() {
-	return new CommandResponse(null, commandType);
+	return new CommandResponse(commandType);
   }
 }

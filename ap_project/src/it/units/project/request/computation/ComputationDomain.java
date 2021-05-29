@@ -2,10 +2,10 @@ package it.units.project.request.computation;
 
 import com.google.common.collect.Lists;
 import it.units.project.exception.BadDomainDefinition;
-import it.units.project.request.computation.variablevaluesfunction.VariableValue;
+import it.units.project.request.computation.variablevalue.VariableValue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,8 +20,8 @@ public class ComputationDomain {
   }
 
   public MultiVariableValues buildComputationDomain() {
-	if (isVariableNameAlreadyDefined(variableValuesList)) {
-	  throw new BadDomainDefinition("Same variable defined twice.");
+	if (isVariableNameAlreadyDefined()) {
+	  throw new BadDomainDefinition("Same variable defined more than once.");
 	}
 	final List<String> variablesNames = getVariablesNames();
 	final List<List<Double>> valuesSequences = buildVariableValuesSequences();
@@ -80,10 +80,8 @@ public class ComputationDomain {
 	return lastSize;
   }
 
-  private boolean isVariableNameAlreadyDefined(List<VariableValue> listOfVariableValues) {
-	String[] variables = listOfVariableValues.stream()
-			.map(VariableValue::getVariableName)
-			.toArray(String[]::new);
-	return Arrays.stream(variables).distinct().count() != variables.length;
+  private boolean isVariableNameAlreadyDefined() {
+	List<String> variableNames = getVariablesNames();
+	return variableNames.size() != new HashSet<>(variableNames).size();
   }
 }

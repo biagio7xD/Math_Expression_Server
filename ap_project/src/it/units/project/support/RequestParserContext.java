@@ -22,8 +22,8 @@ public class RequestParserContext {
 	  public void syntaxError(Recognizer<?, ?> recognizer, Object offendingSymbol, int line,
 							  int charPositionInLine, String msg, RecognitionException e) {
 		throw new MalformedInputRequest(
-				"The request doesn't respect the protocol specifications. " + String
-						.format("Unexpected char at pos %s.", charPositionInLine)
+				"The request doesn't respect the protocol specifications. "
+						+ String.format("Unexpected char at pos %s.", charPositionInLine)
 		);
 	  }
 	});
@@ -39,9 +39,5 @@ public class RequestParserContext {
 	  }
 	});
 	return commandChooser.choose(requestGrammarParser);
-  }
-
-  public interface CommandChooser {
-	ParserRuleContext choose(RequestGrammarParser parser);
   }
 }

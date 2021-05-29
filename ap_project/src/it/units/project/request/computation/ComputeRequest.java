@@ -4,7 +4,7 @@ import it.units.project.exception.ComputationException;
 import it.units.project.request.AbstractRequest;
 import it.units.project.request.CommandType;
 import it.units.project.request.computation.expression.*;
-import it.units.project.request.computation.variablevaluesfunction.VariableValue;
+import it.units.project.request.computation.variablevalue.VariableValue;
 import it.units.project.response.AbstractResponse;
 import it.units.project.response.CommandResponse;
 import it.units.project.response.SuccessfulResponse;
@@ -63,7 +63,6 @@ public class ComputeRequest extends AbstractRequest {
 	  case AVG -> currentResult / size;
 	  default -> throw new IllegalStateException("Unexpected value: " + computationType);
 	};
-
   }
 
   private double mergeResult(double currentResult, double tmpResult) {
@@ -88,7 +87,7 @@ public class ComputeRequest extends AbstractRequest {
 	double value = 0.0;
 	if (node.getClass() == Variable.class) {
 	  boolean control = false;
-	  for (String variableName : multiVariableValues.getVariablesNames()) {
+	  for (String variableName : multiVariableValues.getVariableNames()) {
 		if (variableName.equals(((Variable) node).getName())) {
 		  value = multiVariableValues.getValueOfVariableNameFromTuple(variableName, idxTuple);
 		  control = true;

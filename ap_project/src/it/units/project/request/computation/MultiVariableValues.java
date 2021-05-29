@@ -4,37 +4,37 @@ import java.util.List;
 
 public class MultiVariableValues {
 
-  private final List<String> variablesNames;
-  private final List<List<Double>> variablesValuesTuples;
+  private final List<String> variableNames;
+  private final List<List<Double>> variableValuesTuples;
 
-  public MultiVariableValues(List<String> variablesNames, List<List<Double>> variablesValuesTuples) {
-	this.variablesNames = variablesNames;
-	this.variablesValuesTuples = variablesValuesTuples;
+  public MultiVariableValues(List<String> variableNames, List<List<Double>> variableValuesTuples) {
+	this.variableNames = variableNames;
+	this.variableValuesTuples = variableValuesTuples;
   }
 
-  public List<String> getVariablesNames() {
-	return variablesNames;
+  public List<String> getVariableNames() {
+	return variableNames;
   }
 
   public int size() {
-	return variablesValuesTuples.size();
+	return variableValuesTuples.size();
   }
 
   public double getValueOfVariableNameFromTuple(String variableName, int idxTuple) {
 	int idxVariableName = getVariableNameIndex(variableName);
-	return variablesValuesTuples.get(idxTuple).get(idxVariableName);
+	return variableValuesTuples.get(idxTuple).get(idxVariableName);
   }
 
   private int getVariableNameIndex(String variableName) {
-	return variablesNames.indexOf(variableName);
+	return variableNames.indexOf(variableName);
   }
 
   @Override
   public String toString() {
 	StringBuilder stringBuilder = new StringBuilder();
-	for (int idxTuple = 0; idxTuple < variablesValuesTuples.size(); idxTuple++) {
+	for (int idxTuple = 0; idxTuple < variableValuesTuples.size(); idxTuple++) {
 	  stringBuilder.append("[ ");
-	  for (String variableName : variablesNames) {
+	  for (String variableName : variableNames) {
 		stringBuilder.append(variableName)
 				.append(":")
 				.append(getValueOfVariableNameFromTuple(variableName, idxTuple))
